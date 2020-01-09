@@ -1,8 +1,8 @@
 import calculator
 
 class TestCalculator:
-  def test_calculator(self):
+  def test_addition(self):
     assert 4 == calculator.add(2, 2)
     
-  def test_calculator(self):
+  def test_subraction(self):
     assert 2 == calculator.subtract(4, 2)
