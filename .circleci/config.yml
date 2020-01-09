@@ -20,6 +20,7 @@ jobs:
             pytest -v --cov=calculator
             
 workflows:
+  version: 2.1
   jobs:
     build_test:
       - run_test
