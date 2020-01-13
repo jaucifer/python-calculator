@@ -23,9 +23,7 @@ jobs:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
       - run:
           name: "Run tests"
-          command: |
-            mkdir test-reports
-            pytest -v --cov=calculator 
+          command: pytest -v --cov=calculator 
       - run:
           name: "Run tests 2"
           command: |
