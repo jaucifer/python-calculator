@@ -16,7 +16,6 @@ jobs:
           name: "Run tests"
           command: |
             flake8 --exclude=venv* --statistics
-            flake8 ./ test --output-file test-reports
             pytest -v --cov=calculator
       - store_artifacts:
           path: test-reports
