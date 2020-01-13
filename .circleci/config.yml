@@ -8,14 +8,11 @@ jobs:
       - checkout
       - run:
           name: "Install dependencies"
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install --user -r requirements.txt
+          command: pip install --user -r requirements.txt
       - run:
           name: "Run tests"
           command: |
-            flake8 --exclude=venv* --statistics
+            flake8 --exclude=venv* --statistics --output-file test-reports
             pytest -v --cov=calculator
       - store_artifacts:
           path: test-reports
