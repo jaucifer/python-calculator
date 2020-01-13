@@ -13,7 +13,11 @@ jobs:
           name: "Run tests"
           command: |
             flake8 --exclude=venv* --statistics
+            flake8 ./ --max-line-length=100 --output-file test-reports
             pytest -v --cov=calculator
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
             
 workflows:
   version: 2.1
