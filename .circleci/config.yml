@@ -24,8 +24,8 @@ jobs:
       - run:
           name: "Run tests 2"
           command: |
-          mkdir: test-reports
-          flake8 --output-file=test-reports/test-reports.txt
+            mkdir: test-reports
+            flake8 --output-file=test-reports/test-reports.txt
       - store_artifacts:
           path: test-reports
           destination: test-reports
