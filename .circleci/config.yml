@@ -22,7 +22,8 @@ jobs:
           name: "Run tests"
           command: |
             pytest -v --cov=calculator
-            flake8 ./ test --output-file test-reports
+            . venv/bin/activate
+            flake8 ./  --max-line-length=100 --output-file test-reports
       - store_artifacts:
           path: test-reports
           destination: test-reports
