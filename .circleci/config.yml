@@ -23,7 +23,9 @@ jobs:
           command: pytest -v --cov=calculator
       - run:
           name: "Run tests 2"
-          command: flake8 --output-file=test-reports
+          command: |
+          mkdir: test-reports
+          flake8 --output-file=test-reports/test-reports.txt
       - store_artifacts:
           path: test-reports
           destination: test-reports
