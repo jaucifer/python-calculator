@@ -6,9 +6,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: "Install Python Dependencies 1"
-          command: echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
@@ -23,12 +20,9 @@ jobs:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
       - run:
           name: "Run tests"
-          command: pytest -v --cov=calculator
-      - run:
-          name: "Run tests 2"
           command: |
-            mkdir test-reports
-            flake8 --output-file=test-reports/test-reports.txt
+            pytest -v --cov=calculator
+            flake8 ./ test --output-file test-reports
       - store_artifacts:
           path: test-reports
           destination: test-reports
