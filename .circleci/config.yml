@@ -13,7 +13,7 @@ jobs:
           name: "Run tests"
           command: |
             mkdir test-results
-            flake8 ./ test --output-file test-reports
+            flake8 ./ tests --output-file test-reports.txt
             pytest -v --cov=calculator
       - store_artifacts:
           path: test-reports
