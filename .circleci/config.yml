@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  run_test:
+  build:
     docker:
       - image: circleci/python:3.7
     working_directory: ~/repo
@@ -21,8 +21,4 @@ jobs:
           path: test-reports
           destination: test-reports
             
-workflows:
-  version: 2.1
-  build-tests:
-    jobs:
-      - run_test
+
