@@ -11,7 +11,8 @@ jobs:
           command: pip install --user -r requirements.txt
       - run:
           name: "Run tests"
-          command: |
+          command: |          
+            . venv/bin/activate
             flake8 --exclude=venv* --statistics
             flake8 ./ --max-line-length=100 --output-file test-reports
             pytest -v --cov=calculator
