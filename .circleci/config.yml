@@ -13,7 +13,10 @@ jobs:
           - v1-dependencies-
       - run:
           name: "Install dependencies"
-          command: pip install --user -r requirements.txt
+          command: 
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install --user -r requirements.txt
       - save_cache:
           paths:
             - ./venv
@@ -22,11 +25,13 @@ jobs:
           name: "Run Linter"
           working_directory: ~/repo
           command: |
+            . .venv/bin/activate
             mkdir -p test-reports/flake8
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Check for warnings."
           command: |
+            . .venv/bin/activate
             if [ -f .flake8warnings ]; then
               flake8 --append-config=.flake8warnings
             else
@@ -36,6 +41,7 @@ jobs:
       - run:
           name: Check for errors.
           command: |
+            . .venv/bin/activate
             if [ -f .flake8errors ]; then
               flake8 --append-config=.flake8errors
             else
@@ -46,6 +52,7 @@ jobs:
       - run:
           name: "Run tests"
           command: |
+            . .venv/bin/activate
             pytest -v --cov=calculator
             flake8 --exclude=venv* --statistics
             flake8 . --bug-report
@@ -54,11 +61,14 @@ jobs:
       - run:
           name: "Run test2"
           working_directory: ~/repo
-          command: coverage run test_calculator.py test
+          command: |
+            . .venv/bin/activate
+            coverage run test_calculator.py test
       - run:
           name: "Create Test Reports"
           working_directory: ~/repo
           command: |
+            . .venv/bin/activate
             flake8_junit test-reports/flake8/flake8.txt test-reports/flake8/flake8_junit.xml
             coverage html -d test-reports/coverage
           when: always
