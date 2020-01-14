@@ -28,9 +28,7 @@ jobs:
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: Code style check
-          command: |
-            flake8
-            black --check .
+          command: black --check .
       - run:
           name: "Check for warnings."
           command: |
