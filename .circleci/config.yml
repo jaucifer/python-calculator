@@ -25,7 +25,6 @@ jobs:
           name: "Run Linter"
           working_directory: ~/repo
           command: |
-            . .venv/bin/activate
             mkdir -p test-reports/flake8
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
