@@ -26,6 +26,7 @@ jobs:
           working_directory: ~/repo
           command: |
             mkdir -p test-reports/flake8
+            . .venv/bin/activate
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Check for warnings."
@@ -57,12 +58,14 @@ jobs:
             flake8 . --bug-report
             flake8 . --benchmark
             flake8 . --count
+          when: always
       - run:
           name: "Run test2"
           working_directory: ~/repo
           command: |
             . .venv/bin/activate
             coverage run test_calculator.py test
+          when: always
       - run:
           name: "Create Test Reports"
           working_directory: ~/repo
