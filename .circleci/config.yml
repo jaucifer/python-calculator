@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  lint_test_coverage:
+  calculator-test:
     docker:
       - image: circleci/python:3.7
     working_directory: ~/repo
@@ -72,10 +72,10 @@ jobs:
           destination: tr1
 
 workflows:
-  version: 2
-  lint_test:
+  version: 2.1
+  calculator-test-result:
     jobs:
-      - lint_test_coverage:
+      - calculator-test:
           filters:
             branches:
               only: master
