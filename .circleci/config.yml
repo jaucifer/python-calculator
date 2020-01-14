@@ -40,7 +40,6 @@ jobs:
           name: "Create Test Reports"
           working_directory: ~/repo
           command: |
-            mkdir -p test-reports/flake8
             flake8_junit test-reports/flake8/flake8.txt test-reports/flake8/flake8_junit.xml
             coverage html -d test-reports/coverage
           when: always
