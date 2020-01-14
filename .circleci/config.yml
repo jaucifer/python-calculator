@@ -34,6 +34,16 @@ jobs:
             fi
           when: always
       - run:
+          name: Check for errors.
+          command: |
+            if [ -f .flake8errors ]; then
+              flake8 --append-config=.flake8errors
+            else
+              flake8 --extend-ignore="$FLAKE8_WARNINGS"
+            fi
+          when: always
+
+      - run:
           name: "Run tests"
           command: |
             pytest -v --cov=calculator
