@@ -23,15 +23,15 @@ jobs:
           working_directory: ~/repo
           command: |
             mkdir -p test-reports/flake8
-            flake8 . --bug-report
-            flake8 . --benchmark
-            flake8 . --count
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Run tests"
           command: |
             pytest -v --cov=calculator
             flake8 --exclude=venv* --statistics
+            flake8 . --bug-report
+            flake8 . --benchmark
+            flake8 . --count
       - run:
           name: "Run test2"
           working_directory: ~/repo
