@@ -26,6 +26,10 @@ jobs:
             flake8 . --bug-report
             flake8 . --benchmark
             flake8 . --count
+            flake8 . --stdin-display-name=STDIN_DISPLAY_NAME
+            flake8 . --show-source
+            flake8 . --statistics
+            flake8 . --doctests
             flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Run tests"
