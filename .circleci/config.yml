@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: circleci/python:3.7
     working_directory: ~/repo
+    parameters:
+      wd:
+        type: string
     steps:
       - checkout
       - restore_cache:
@@ -27,6 +30,7 @@ jobs:
       - run:
           name: "Check for warnings."
           command: |
+            cd <<parameters.wd>>
             if [ -f .flake8warnings ]; then
               flake8 --append-config=.flake8warnings
             else
@@ -36,6 +40,7 @@ jobs:
       - run:
           name: Check for errors.
           command: |
+            cd <<parameters.wd>>
             if [ -f .flake8errors ]; then
               flake8 --append-config=.flake8errors
             else
