@@ -23,7 +23,7 @@ jobs:
           working_directory: ~/repo
           command: |
             mkdir -p test-reports/flake8
-            flake8 . --statistics --output-file=test-reports/flake8/flake8.txt
+            flake8 . --bug-report --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Run tests"
           command: |
