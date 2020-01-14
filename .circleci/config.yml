@@ -26,7 +26,7 @@ jobs:
             flake8 . --bug-report
             flake8 . --benchmark
             flake8 . --count
-            flake8 . --statistics --output-file=test-reports/flake8/flake8.txt
+            flake8 . --output-file=test-reports/flake8/flake8.txt
       - run:
           name: "Run tests"
           command: |
