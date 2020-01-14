@@ -19,10 +19,26 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
       - run:
-          name: "Run tests"
+          name: "Run Linter"
+          working_directory: ~/workspace/src
           command: |
-            pytest -v --cov=calculator
-            flake8 --exclude=venv* --statistics
+            mkdir -p test-reports/flake8
+            flake8 . --output-file=test-reports/flake8/flake8.txt
+      - run:
+          name: "Run test"
+          working_directory: ~/workspace/src
+          command: coverage run calculator test
+      - run:
+          name: "Create Test Reports"
+          working_directory: ~/workspace/src
+          command: |
+            mkdir -p myapp/test-reports/flake8
+            flake8_junit test-reports/flake8/flake8.txt test-reports/flake8/flake8_junit.xml
+            coverage html -d test-reports/coverage
+          when: always
+      - store_test_results:
+          path: myapp/test-reports
+      
       - store_artifacts:
-          path: test-reports
-          destination: test-reports
+          path: myapp/test-reports
+          destination: tr1
