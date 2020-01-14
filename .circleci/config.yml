@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  lint_test_coverage:
     docker:
       - image: circleci/python:3.7
     working_directory: ~/repo
@@ -77,3 +77,12 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: tr1
+
+workflows:
+  version: 2
+  lint_test:
+    jobs:
+      - lint_test_coverage:
+          filters:
+            branches:
+              only: master
