@@ -27,7 +27,7 @@ jobs:
       - run:
           name: "Run test"
           working_directory: ~/workspace/src
-          command: coverage run calculator test
+          command: coverage run test_calculator.py test
       - run:
           name: "Create Test Reports"
           working_directory: ~/workspace/src
