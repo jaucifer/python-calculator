@@ -15,5 +15,5 @@ exclude =
     dist,
     lib,
     _pytest,
-    flake8_junit
+    lib/python3.7/site-packages/junit_conversor/__main__.py
 max-complexity = 10
