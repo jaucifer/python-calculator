@@ -12,8 +12,5 @@ exclude =
     # This contains our built documentation
     build,
     # This contains builds of flake8 that we don't want to check
-    dist,
-    lib,
-    _pytest,
-    lib/python3.7/site-packages/junit_conversor/__main__.py
+    dist
 max-complexity = 10
