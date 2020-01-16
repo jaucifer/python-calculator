@@ -13,5 +13,6 @@ exclude =
     build,
     # This contains builds of flake8 that we don't want to check
     dist,
-    python3.7
+    lib,
+    _pytest
 max-complexity = 10
