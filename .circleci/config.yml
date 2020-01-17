@@ -42,6 +42,10 @@ jobs:
               flake8 --extend-ignore="$FLAKE8_WARNINGS"
             fi
           when: always
+      - run:
+          name: "Create PYTest Reports"
+          command: pytest --junitxml=test-reports/pytest/pytest-junit.xml --html=test-reports/pytest/pytest_report.html --self-contained-html
+          when: always
 
       - run:
           name: "Run tests"
